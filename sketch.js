@@ -1,3 +1,5 @@
+// Creating 16x16 div grid
+
 const body = document.querySelector("body");
 
 const container = document.createElement("div");
@@ -26,5 +28,13 @@ for (let i = 0; i < 256; i++){
     rowDivToAdd.appendChild(squareDiv);
 }
 
+// Adding hovering effect to each square div
 
+const squaresArray = document.querySelectorAll(".square");
+
+squaresArray.forEach((square) => {
+    square.addEventListener("mouseover", (event) => {
+        square.style.backgroundColor = "black"
+    })
+})
 
