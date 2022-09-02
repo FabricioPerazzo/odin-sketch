@@ -21,7 +21,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 45px;
     margin: 0;
     padding: 0;
     background-color: white;
@@ -31,8 +31,41 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 40px;
-    border: 2px solid black;
+    height: 45px;
+    width: 45px;
+    outline: 2px solid black;
     background-color: white;
+}
+
+.buttonsDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 720px;
+    padding-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.sizeButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.eraseButtonDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px 10px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
 }
