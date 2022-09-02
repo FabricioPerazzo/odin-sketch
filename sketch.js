@@ -1,4 +1,50 @@
-// Creating 16x16 div grid
+function createGrid(size) {
+    let format;
+    if (size === 16) format = "small";
+    else if (size === 40) format = "medium";
+    else format = "big";
+
+    let rowsArray = document.querySelectorAll(".isRow");
+    rowsArray.forEach((row) => {
+        row.remove();
+    });
+
+    for (let i = 0; i < size; i++){
+        let rowDiv = document.createElement("div");
+        rowDiv.classList.add(`${format}Row`);
+        rowDiv.classList.add("isRow");
+        rowDiv.id = `row${i}`;
+        container.prepend(rowDiv);
+    }
+
+    let j = 0;
+    for (let i = 0; i < (size * size); i++){
+        if (i !== 0 && i % size === 0){
+            j++;
+        }
+
+        let rowDivToAdd = document.querySelector(`#row${j}`);
+
+        let squareDiv = document.createElement("div");
+        squareDiv.classList.add(`${format}Square`);
+        squareDiv.classList.add("isSquare");
+        rowDivToAdd.appendChild(squareDiv);
+    }
+
+    // Adding hovering effect to each square div
+
+    const squaresArray = document.querySelectorAll(".isSquare");
+
+    squaresArray.forEach((square) => {
+        square.addEventListener("mouseover", (event) => {
+            square.style.backgroundColor = "black";
+        })
+    })
+}
+
+
+
+// Creating initial 16x16 div grid
 
 const body = document.querySelector("body");
 
@@ -7,36 +53,7 @@ container.classList.add("container");
 
 body.appendChild(container);
 
-for (let i = 0; i < 16; i++){
-    let rowDiv = document.createElement("div");
-    rowDiv.classList.add("row");
-    rowDiv.id = `row${i}`;
-    container.appendChild(rowDiv);
-}
-
-let j = 0;
-for (let i = 0; i < 256; i++){
-    if (i !== 0 && i % 16 === 0){
-        j++;
-    }
-
-    let rowDivToAdd = document.querySelector(`#row${j}`);
-
-    let squareDiv = document.createElement("div");
-    squareDiv.classList.add("square");
-
-    rowDivToAdd.appendChild(squareDiv);
-}
-
-// Adding hovering effect to each square div
-
-let squaresArray = document.querySelectorAll(".square");
-
-squaresArray.forEach((square) => {
-    square.addEventListener("mouseover", (event) => {
-        square.style.backgroundColor = "black"
-    })
-})
+createGrid(16); // creates a small grid
 
 // Adding size and erase buttons to display
 
@@ -81,5 +98,19 @@ buttonsDisplay.appendChild(eraseButtonDisplay);
 // Adding functionality to the buttons
 
 eraseButton.addEventListener("click", (event) => {
+    let squaresArray = document.querySelectorAll(".isSquare");
 
-})
+    squaresArray.forEach((square) => {
+        square.style.backgroundColor = "white";
+    })
+});
+
+smallButton.addEventListener("click", (event) => {
+    createGrid(16); // small 16 rows
+});
+mediumButton.addEventListener("click", (event) => {
+    createGrid(40); // medium 40 rows
+});
+bigButton.addEventListener("click", (event) => {
+    createGrid(80); // big 80 rows
+});
