@@ -8,6 +8,7 @@ body, html {
     background-color: lightblue;
     width: 100%;
     height: auto;
+    zoom: 85%;
 }
 
 .container {
